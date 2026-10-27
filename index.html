@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Küçük Kökler Anaokulu, Meram Konya. 2–6 yaş için oyunla ve keşfederek öğrenen anaokulu.">
+<style>img{max-width:100%}[hidden]{display:none!important}body{margin:0}</style>
+</head>
+<body>
+<title>Küçük Kökler Anaokulu</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Comfortaa:wght@500;700&family=Nunito:wght@400;600;700;800;900&display=swap">
+<style>
+/* Layout: sayfa bir ağaç gibi okunur. Üstte toprağın üstü (hero), hemen altında toprak bandı ve kökler (değerlerimiz),
+   sonra büyüme cetveli (yaş grupları), dersler, okul hayatı; en altta yine toprak. Kök çizgisi tek tekrarlayan motif. */
+:root{
+  --bg:#FDFBF6;--band:#F5EDDC;--card:#FFFFFF;
+  --ink:#4B2D1F;--ink-soft:#6E6234;
+  --leaf:#BEAC69;--bark:#916F54;
+  --forest:#354731;--forest-ink:#FDFBF6;--forest-shadow:#1F2B1C;
+  --honey:#FAD594;--clay:#BD6252;
+  --tint1:#FCEBC8;--tint2:#E6EAD6;--tint3:#F6DED5;
+  --soil:#4B2D1F;--soil-ink:#F5EDDC;--soil-soft:#D9C7A3;--root:#C9A57A;--root-sap:#FAD594;
+  --line:#E6D9BF;
+  --display:"Comfortaa","Varela Round","Trebuchet MS",sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,sans-serif;
+  --hand:"Caveat","Comic Sans MS","Segoe Print",cursive;
+  --blob:58% 42% 50% 50% / 52% 46% 54% 48%;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1E1611;--band:#271D16;--card:#2F231A;--ink:#F5EDDC;--ink-soft:#D8C99C;--leaf:#A29258;--bark:#C9A57A;
+  --forest:#B9C9A6;--forest-ink:#1E1611;--forest-shadow:#7E8F6C;--honey:#E9BE70;--clay:#E28C79;
+  --tint1:#3A2D18;--tint2:#2B3226;--tint3:#3C2620;--soil:#140E0A;--soil-ink:#F5EDDC;--soil-soft:#CDBB95;
+  --root:#8A6B4C;--root-sap:#E9BE70;--line:#46362A;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1E1611;--band:#271D16;--card:#2F231A;--ink:#F5EDDC;--ink-soft:#D8C99C;--leaf:#A29258;--bark:#C9A57A;
+  --forest:#B9C9A6;--forest-ink:#1E1611;--forest-shadow:#7E8F6C;--honey:#E9BE70;--clay:#E28C79;
+  --tint1:#3A2D18;--tint2:#2B3226;--tint3:#3C2620;--soil:#140E0A;--soil-ink:#F5EDDC;--soil-soft:#CDBB95;
+  --root:#8A6B4C;--root-sap:#E9BE70;--line:#46362A;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.2;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+h3{font-size:1.15rem}
+p{margin:0}
+svg .r,svg .r2{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(56px,8vw,100px)}
+.band{background:var(--band)}
+.hand{font-family:var(--hand);font-weight:700;color:var(--clay);font-size:1.5rem;line-height:1.1}
+.lead{font-size:1.12rem;color:var(--ink-soft);max-width:60ch}
+
+/* başlık altı kök çizgisi */
+.rooted{display:inline-block;position:relative;padding-bottom:22px}
+.rooted::after{content:"";position:absolute;left:0;bottom:0;width:min(220px,80%);height:20px;background:var(--leaf);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 20'%3E%3Cpath d='M3 6 C40 2 70 12 110 6 S180 3 217 7 M62 8 C68 13 74 16 84 17 M150 5 C156 11 162 15 172 16 M110 6 C114 11 114 15 118 18' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 0 0/100% 100%;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 20'%3E%3Cpath d='M3 6 C40 2 70 12 110 6 S180 3 217 7 M62 8 C68 13 74 16 84 17 M150 5 C156 11 162 15 172 16 M110 6 C114 11 114 15 118 18' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 0 0/100% 100%}
+.head{display:grid;gap:10px;margin-bottom:40px;max-width:720px}
+.head .hand{transform:rotate(-2deg);transform-origin:left}
+
+/* oyuncak butonlar */
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.75em 1.4em;border-radius:999px;font-weight:900;text-decoration:none;
+  border:0;background:var(--forest);color:var(--forest-ink);font-family:var(--body);font-size:1rem;cursor:pointer;
+  box-shadow:0 5px 0 var(--forest-shadow);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--forest-shadow)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--forest-shadow)}
+.btn.ghost{background:var(--card);color:var(--ink);box-shadow:0 5px 0 var(--line);border:2px solid var(--line)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+
+.draft{background:var(--honey);color:#4B2D1F;font-size:.85rem;font-weight:800;text-align:center;padding-block:6px}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.logo{display:flex;align-items:center;background:#FDFBF6;border-radius:14px;padding:5px 10px}
+.logo img{height:40px;width:auto;display:block}
+.nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-weight:800;font-size:.95rem}
+.nav ul a{text-decoration:none;color:var(--ink-soft)}
+.nav ul a:hover{color:var(--ink)}
+.nav .btn{padding:.5em 1.1em;font-size:.92rem;box-shadow:0 4px 0 var(--forest-shadow)}
+@media (max-width:920px){.nav ul{display:none}}
+
+/* HERO: toprağın üstü */
+.hero{padding-block:clamp(36px,5vw,64px) 0;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,56px);align-items:end}
+.hero-text{padding-bottom:clamp(40px,6vw,72px);min-width:0}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--honey);color:#4B2D1F;font-weight:900;font-size:.85rem;padding:.35em .9em;border-radius:999px;margin-bottom:22px;transform:rotate(-1.5deg)}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--clay)}
+.hero h1{font-size:clamp(3rem,8vw,5.6rem);letter-spacing:-.015em;line-height:1.05}
+.hero h1 .w{position:relative;display:inline-block}
+.hero h1 .w1{color:var(--ink)}
+.hero h1 .w2{color:var(--forest);margin-top:.42em}
+.word-roots{position:absolute;left:0;top:86%;width:100%;height:.55em;overflow:visible;pointer-events:none}
+.word-roots .r{stroke:var(--bark);stroke-width:3}
+.word-roots .r2{stroke:var(--bark);stroke-width:1.6}
+.sprout{position:absolute;right:-.5em;top:-.55em;width:.7em;height:.7em;overflow:visible}
+.sprout .r{stroke:var(--forest);stroke-width:3}
+.sprout .lf{fill:var(--leaf)}
+.hero .lead{margin-top:26px}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.phone{font-variant-numeric:tabular-nums}
+
+.hero-art{position:relative;justify-self:center;width:min(100%,440px);padding-bottom:0}
+.sun{position:absolute;right:-6%;top:-4%;width:42%;aspect-ratio:1;z-index:0}
+.sun circle{fill:var(--honey)}
+.sun .r{stroke:var(--honey);stroke-width:4}
+.hero-art .photo{position:relative;z-index:1;width:100%;aspect-ratio:4/4.6;object-fit:cover;display:block;border-radius:var(--blob);border:6px solid var(--card);box-shadow:0 18px 40px rgb(75 45 31 / .16);max-width:100%}
+.hero-art .note{position:absolute;z-index:2;left:-6%;bottom:16%;transform:rotate(-6deg);background:var(--card);padding:8px 14px 10px;border-radius:12px;box-shadow:0 6px 18px rgb(75 45 31 / .14)}
+.hero-art .note small{display:block;font-family:var(--body);font-size:.8rem;color:var(--ink-soft);font-weight:700}
+.leafdoodle{position:absolute;width:56px;height:56px;z-index:2}
+.leafdoodle path{fill:var(--leaf)}
+.leafdoodle .r{stroke:var(--forest);stroke-width:2}
+.grass{display:block;width:100%;height:26px;margin-bottom:-2px;position:relative;z-index:2}
+.grass path{fill:var(--soil)}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.hero-text{padding-bottom:12px}.hero-art{margin-bottom:28px}.hero-art .note{left:2%}}
+
+/* TOPRAK: köklerimiz */
+.soil{background:var(--soil);color:var(--soil-ink);padding-block:clamp(40px,6vw,64px) clamp(56px,7vw,88px);position:relative}
+.soil .head h2{color:var(--soil-ink)}
+.soil .lead{color:var(--soil-soft)}
+.soil .hand{color:var(--honey)}
+.soil .rooted::after{background:var(--root)}
+.rootmap{position:relative}
+.rootmap svg{display:block;width:100%;height:clamp(120px,18vw,210px)}
+.rootmap .base .r{stroke:var(--root);stroke-width:5}
+.rootmap .base .r2{stroke:var(--root);stroke-width:2.2}
+.rootmap .sap .r,.rootmap .sap .r2{stroke:var(--root-sap)}
+.rootmap .sap .r{stroke-width:2.5}.rootmap .sap .r2{stroke-width:1.4}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.value{display:grid;justify-items:center;text-align:center;gap:8px;min-width:0}
+.seed{width:22px;height:22px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:var(--honey);box-shadow:0 0 0 6px color-mix(in srgb,var(--honey) 25%,transparent);margin-top:-12px}
+.value h3{color:var(--soil-ink)}
+.value p{color:var(--soil-soft);font-size:.95rem;max-width:26ch}
+@media (max-width:760px){.rootmap svg{display:none}.values{grid-template-columns:1fr 1fr;row-gap:32px}.seed{margin-top:0}}
+
+/* BÜYÜME CETVELİ: yaş grupları */
+.growth{display:grid;grid-template-columns:52px repeat(4,1fr);align-items:end;position:relative;height:340px;border-bottom:10px solid var(--soil);border-radius:0 0 6px 6px;margin-top:10px}
+.ruler{position:relative;height:100%;border-right:3px solid var(--bark)}
+.ruler span{position:absolute;right:6px;transform:translateY(50%);font-size:.78rem;font-weight:800;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.ruler span::after{content:"";position:absolute;right:-9px;top:50%;width:8px;border-top:2px solid var(--bark)}
+.stage{position:relative;height:100%;display:flex;justify-content:center;align-items:flex-end;min-width:0}
+.stage .mark{position:absolute;left:0;right:0;border-top:2px dashed var(--clay)}
+.stage .mark b{position:absolute;right:6px;top:-30px;font-family:var(--hand);font-size:1.35rem;color:var(--clay);font-weight:700;transform:rotate(-4deg)}
+.stage svg{width:min(110px,90%);overflow:visible}
+.stage .stem{stroke:var(--forest);stroke-width:4;fill:none;stroke-linecap:round}
+.stage .lf{fill:var(--leaf)}
+.stage .lf2{fill:var(--forest)}
+.stage .crown{fill:var(--leaf)}
+.stage .seedshape{fill:var(--bark)}
+.stage-info{display:grid;grid-template-columns:52px repeat(4,1fr);margin-top:18px}
+.stage-info > div{padding:0 10px;display:grid;gap:4px;align-content:start;min-width:0}
+.stage-info .name{font-family:var(--display);font-weight:700;font-size:1.25rem}
+.stage-info .age{display:inline-block;justify-self:start;background:var(--tint1);border-radius:999px;padding:.1em .7em;font-weight:900;font-size:.82rem}
+.stage-info p{color:var(--ink-soft);font-size:.92rem}
+.chart-note{margin-top:18px;font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:700px){
+  .growth{grid-template-columns:40px repeat(4,1fr);height:280px}
+  .stage .mark b{font-size:1.1rem;top:-26px;right:2px}
+  .stage-info{grid-template-columns:1fr 1fr;gap:22px 12px}
+  .stage-info > div:first-child{display:none}
+  .stage-info > div{padding:0}
+}
+
+/* DERSLER */
+.courses{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.course{border-radius:28px;padding:16px 16px 22px;display:grid;gap:12px;align-content:start;position:relative;transition:transform .2s}
+.course:nth-child(3n+1){background:var(--tint1)}
+.course:nth-child(3n+2){background:var(--tint2)}
+.course:nth-child(3n){background:var(--tint3)}
+.course img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:var(--blob);max-width:100%}
+.course:nth-child(even) img{border-radius:46% 54% 42% 58% / 55% 45% 55% 45%}
+.course .sticker{position:absolute;top:8px;right:14px;background:var(--card);color:var(--clay);font-weight:900;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.35em .8em;border-radius:999px;transform:rotate(4deg);box-shadow:0 3px 0 var(--line)}
+.course:nth-child(even) .sticker{transform:rotate(-4deg)}
+.course h3,.course p{padding-inline:6px}
+.course p{color:var(--ink-soft);font-size:.95rem}
+@media (prefers-reduced-motion:no-preference){.course:hover{transform:rotate(-1deg) translateY(-4px)}.course:nth-child(even):hover{transform:rotate(1deg) translateY(-4px)}}
+@media (max-width:900px){.courses{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.courses{grid-template-columns:1fr}}
+
+/* HAKKIMIZDA */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.polaroid{margin:0;background:var(--card);padding:12px 12px 16px;border-radius:6px;box-shadow:0 12px 30px rgb(75 45 31 / .15);transform:rotate(-2.5deg);position:relative;max-width:380px}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:110px;height:28px;transform:translateX(-50%) rotate(3deg);background:color-mix(in srgb,var(--honey) 75%,transparent)}
+.polaroid img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center 30%;display:block}
+.polaroid figcaption{text-align:center;margin-top:8px}
+.polaroid figcaption small{display:block;font-size:.85rem;color:var(--ink-soft);font-weight:700}
+.about .text{display:grid;gap:18px;min-width:0}
+.quote{font-family:var(--display);font-size:1.22rem;line-height:1.5}
+.vine{list-style:none;margin:6px 0 0;padding:0 0 0 30px;position:relative;display:grid;gap:16px}
+.vine::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;border-left:3px solid var(--bark);border-radius:3px}
+.vine li{position:relative;display:grid;gap:0}
+.vine li::before{content:"";position:absolute;left:-29px;top:4px;width:18px;height:12px;background:var(--leaf);border-radius:0 100% 0 100%;transform:rotate(-20deg)}
+.vine time{font-weight:900;color:var(--ink-soft);font-size:.88rem;font-variant-numeric:tabular-nums}
+.note{font-size:.95rem;background:var(--tint1);border-radius:16px;padding:12px 16px}
+@media (max-width:820px){.about{grid-template-columns:1fr}.polaroid{margin-inline:auto}}
+
+/* OKULDA YAŞAM */
+.life{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center}
+.life-imgs{position:relative;min-height:380px}
+.life-imgs .p{position:absolute;background:var(--card);padding:10px 10px 34px;box-shadow:0 12px 28px rgb(75 45 31 / .16);border-radius:4px;width:58%}
+.life-imgs .p img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.life-imgs .p span{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-family:var(--hand);font-size:1.25rem;color:var(--ink)}
+.life-imgs .p1{left:0;top:10px;transform:rotate(-4deg)}
+.life-imgs .p2{right:0;top:60px;transform:rotate(5deg)}
+.life-list{display:grid;gap:14px}
+.life-list div{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start}
+.life-list svg{grid-row:span 2;width:44px;height:44px}
+.life-list svg .r{stroke:var(--forest);stroke-width:2.4}
+.life-list svg circle.bg{fill:var(--tint2)}
+.life-list p{color:var(--ink-soft);font-size:.95rem}
+@media (max-width:820px){.life{grid-template-columns:1fr}.life-imgs{min-height:0;aspect-ratio:1/0.95;max-width:460px;width:100%;margin-inline:auto}}
+
+/* SSS */
+.faq{display:grid;gap:12px;max-width:820px}
+details{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:0 20px}
+summary{cursor:pointer;font-weight:800;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.4rem;line-height:1;color:var(--clay)}
+details[open] summary::after{content:"–"}
+details p{padding-bottom:18px;color:var(--ink-soft)}
+
+/* KAYIT + İLETİŞİM */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+form{background:var(--card);border-radius:28px;padding:clamp(20px,3vw,32px);display:grid;gap:14px;box-shadow:0 8px 0 var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-weight:800;font-size:.92rem}
+input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:.65em .9em;width:100%}
+textarea{min-height:90px;resize:vertical}
+.form-msg{font-size:.92rem;color:var(--forest);font-weight:800}
+.info{display:grid;gap:22px}
+.info dl{margin:0;display:grid;gap:16px}
+.info dt{font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.info dd{margin:2px 0 0;font-size:1.1rem;font-weight:800}
+.copy{margin-left:8px;font:inherit;font-size:.8rem;font-weight:800;border:2px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:999px;padding:.1em .7em;cursor:pointer}
+@media (max-width:820px){.contact{grid-template-columns:1fr}}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+
+/* footer toprak */
+footer{background:var(--soil);color:var(--soil-soft);padding-block:8px 34px;font-size:.92rem}
+footer .rootline{display:block;width:100%;height:60px}
+footer .rootline .r{stroke:var(--root);stroke-width:2.5}
+footer .rootline .r2{stroke:var(--root);stroke-width:1.4}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+footer .hand{color:var(--honey);font-size:1.6rem}
+.ladybug{width:34px;height:34px;vertical-align:middle}
+.grass-top{display:block;width:100%;height:26px;margin-bottom:-1px}
+.grass-top path{fill:var(--soil)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="draft">Taslak v2 · Görseller Instagram'dan geçici olarak alındı, metinler düzeltilecek</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#ust" aria-label="Küçük Kökler Anaokulu ana sayfa"><img src="img/logo.png" alt="Küçük Kökler Anaokulu"></a>
+    <ul>
+      <li><a href="#koklerimiz">Köklerimiz</a></li>
+      <li><a href="#yas-gruplari">Yaş Grupları</a></li>
+      <li><a href="#dersler">Dersler</a></li>
+      <li><a href="#hakkimizda">Hakkımızda</a></li>
+      <li><a href="#okulda-yasam">Okulda Yaşam</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul>
+    <a class="btn" href="#on-kayit">Ön Kayıt</a>
+  </div>
+</header>
+
+<main id="ust">
+  <!-- Toprağın üstü -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="chip">2026–2027 ön kayıtları açık</span>
+        <h1>
+          <span class="w w1">Kökten<svg class="word-roots" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+            <path class="r" d="M8 0 C9 8 5 14 7 22 S4 28 3 30"/><path class="r2" d="M7 14 C10 18 13 19 15 24"/>
+            <path class="r" d="M30 0 C31 10 27 16 30 30"/><path class="r2" d="M29 12 C25 16 22 17 20 22"/>
+            <path class="r" d="M52 0 C50 9 55 15 52 26"/><path class="r2" d="M53 13 C57 16 60 16 63 20"/>
+            <path class="r" d="M74 0 C76 8 72 14 75 22 S78 28 80 30"/><path class="r2" d="M74 11 C70 15 68 17 66 23"/>
+            <path class="r" d="M94 0 C93 9 97 16 95 26"/><path class="r2" d="M95 15 C99 18 100 21 100 24"/>
+          </svg></span><br>
+          <span class="w w2">Geleceğe<svg class="sprout" viewBox="0 0 40 40" aria-hidden="true"><path class="r" d="M8 40 C8 28 12 20 20 12"/><path class="lf" d="M20 12 C22 2 32 0 40 2 C38 12 30 16 20 12Z"/><path class="lf" d="M12 24 C6 18 0 18 -4 22 C2 28 8 28 12 24Z"/></svg></span>
+        </h1>
+        <p class="lead">Meram'da 2–6 yaş çocuklar için oyunla, doğayla ve keşfederek öğrenen bir anaokulu. Her çocuk kendi hızında büyür, biz de köklerinin sağlam olmasına eşlik ederiz.</p>
+        <div class="actions">
+          <a class="btn" href="#on-kayit">Ön kayıt formu</a>
+          <a class="btn ghost phone" href="tel:+905071318868">0507 131 88 68</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg class="sun" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="26"/>
+          <g><path class="r" d="M50 6v12M50 82v12M6 50h12M82 50h12M19 19l8 8M73 73l8 8M81 19l-8 8M27 73l-8 8"/></g></svg>
+        <img class="photo" src="img/hero.jpg" alt="Bahçede elinde kupayla duran küçük bir çocuk">
+        <div class="note"><span class="hand">Hayata ilk adım!</span><small>7 Ekim 2026'da kapılarımızı açtık</small></div>
+        <svg class="leafdoodle" style="right:-10px;bottom:22%" viewBox="0 0 56 56" aria-hidden="true"><path d="M6 50 C4 24 24 4 52 4 C52 32 32 52 6 50Z"/><path class="r" d="M6 50 C20 36 32 24 44 12"/></svg>
+      </div>
+    </div>
+    <svg class="grass" viewBox="0 0 1200 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 26 V14 L20 6 L34 16 L52 4 L70 16 L92 8 L110 18 L130 6 L150 16 L176 8 L196 18 L222 6 L240 16 L266 9 L290 18 L312 6 L334 16 L360 8 L380 18 L404 5 L426 16 L450 9 L474 18 L498 6 L520 16 L546 8 L568 18 L590 5 L614 16 L640 8 L662 18 L688 6 L708 16 L734 9 L756 18 L780 5 L802 16 L828 8 L850 18 L874 6 L896 16 L920 9 L944 18 L968 5 L990 16 L1014 8 L1036 18 L1060 6 L1082 16 L1106 8 L1128 18 L1152 5 L1176 16 L1200 8 V26Z"/></svg>
+  </section>
+
+  <!-- Toprağın altı: köklerimiz -->
+  <section class="soil" id="koklerimiz">
+    <div class="wrap">
+      <div class="head">
+        <span class="hand">toprağın altında neler var?</span>
+        <h2 class="rooted">Köklerimiz</h2>
+        <p class="lead">Bir ağaç gücünü göremediğimiz köklerinden alır. Bank Street yaklaşımıyla çocuğu merkeze koyan dört kökümüz var.</p>
+      </div>
+      <div class="rootmap">
+        <svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+          <g class="base">
+            <path class="r" d="M500 0 C480 60 300 70 220 120 S140 180 125 220"/>
+            <path class="r" d="M500 0 C495 70 420 110 400 150 S380 190 375 220"/>
+            <path class="r" d="M500 0 C510 70 580 100 600 150 S620 190 625 220"/>
+            <path class="r" d="M500 0 C525 60 700 70 780 120 S860 180 875 220"/>
+            <path class="r2" d="M320 80 C290 96 262 98 236 92"/><path class="r2" d="M220 120 C200 140 186 150 160 152"/>
+            <path class="r2" d="M436 110 C454 132 458 156 450 178"/><path class="r2" d="M690 80 C716 98 744 104 772 98"/>
+            <path class="r2" d="M780 120 C802 140 818 150 846 150"/><path class="r2" d="M584 116 C562 134 554 154 558 174"/>
+            <path class="r2" d="M168 168 C150 178 138 192 136 208"/><path class="r2" d="M838 168 C858 180 868 194 870 206"/>
+          </g>
+        </svg>
+      </div>
+      <div class="values">
+        <div class="value"><span class="seed"></span><h3>Oyunla öğrenme</h3><p>Her çocuk kendi hızında büyür ve keşfeder.</p></div>
+        <div class="value"><span class="seed"></span><h3>Doğayla bağ</h3><p>Toprağa dokunur, merak eder, deneyerek öğrenir.</p></div>
+        <div class="value"><span class="seed"></span><h3>Çok yönlü gelişim</h3><p>Sosyal beceri, öz güven ve problem çözme bir arada.</p></div>
+        <div class="value"><span class="seed"></span><h3>Aileyle birlikte</h3><p>Aile atölyeleri ve rehberlikle aynı yolda.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Büyüme cetveli -->
+  <section id="yas-gruplari">
+    <div class="wrap">
+      <div class="head">
+        <span class="hand">kapı pervazındaki çizgiler gibi</span>
+        <h2 class="rooted">Birlikte büyüyoruz</h2>
+        <p class="lead">Tohumdan ağaca, her yaşın kendi sınıfı ve kendi programı var. Çizgiler o yaştaki çocukların ortalama boyunu gösteriyor.</p>
+      </div>
+      <div class="growth" id="growth" role="img" aria-label="Yaş gruplarına göre ortalama boy: 2 yaş 86 cm, 3 yaş 95 cm, 4 yaş 103 cm, 5 yaş 110 cm">
+        <div class="ruler" id="ruler"></div>
+        <div class="stage" data-cm="86"><span class="mark"><b>86 cm</b></span>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse class="seedshape" cx="50" cy="96" rx="14" ry="8"/><path class="stem" vector-effect="non-scaling-stroke" d="M50 92 C50 70 48 40 50 22"/><path class="lf" d="M50 30 C38 14 22 14 14 20 C24 34 40 36 50 30Z"/><path class="lf" d="M50 24 C60 8 76 6 86 12 C78 26 62 30 50 24Z"/></svg></div>
+        <div class="stage" data-cm="95"><span class="mark"><b>95 cm</b></span>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="stem" vector-effect="non-scaling-stroke" d="M50 100 C48 70 52 40 50 12"/><path class="lf" d="M50 60 C36 50 20 52 12 60 C24 70 40 70 50 60Z"/><path class="lf" d="M50 36 C62 24 78 24 88 30 C78 42 62 44 50 36Z"/><path class="lf2" d="M50 16 C42 4 30 2 24 6 C30 18 42 20 50 16Z"/><path class="lf" d="M50 14 C56 2 68 0 76 4 C70 14 58 18 50 14Z"/></svg></div>
+        <div class="stage" data-cm="103"><span class="mark"><b>103 cm</b></span>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="stem" vector-effect="non-scaling-stroke" d="M50 100 C50 70 48 40 50 20"/><path class="stem" vector-effect="non-scaling-stroke" d="M50 56 C40 46 30 40 20 36"/><path class="stem" vector-effect="non-scaling-stroke" d="M50 40 C60 32 70 28 82 26"/><circle class="crown" cx="22" cy="32" r="14"/><circle class="crown" cx="80" cy="22" r="15"/><circle class="crown" cx="50" cy="14" r="18"/></svg></div>
+        <div class="stage" data-cm="110"><span class="mark"><b>110 cm</b></span>
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="stem" vector-effect="non-scaling-stroke" style="stroke:var(--bark);stroke-width:8" d="M50 100 C49 80 51 60 50 40"/><path class="stem" vector-effect="non-scaling-stroke" style="stroke:var(--bark)" d="M50 58 C40 50 32 46 24 44M50 50 C60 44 68 40 78 38"/><circle class="crown" cx="30" cy="34" r="22"/><circle class="crown" cx="70" cy="30" r="24"/><circle class="crown" cx="50" cy="18" r="24"/><circle class="lf2" cx="62" cy="14" r="3"/><circle class="lf2" cx="36" cy="26" r="3"/></svg></div>
+      </div>
+      <div class="stage-info">
+        <div></div>
+        <div><span class="age">2 yaş</span><span class="name">Tohumlar</span><p>Uyum, duyusal oyun, ilk arkadaşlıklar.</p></div>
+        <div><span class="age">3 yaş</span><span class="name">Filizler</span><p>Dil gelişimi, paylaşmak, hayal oyunları.</p></div>
+        <div><span class="age">4 yaş</span><span class="name">Fidanlar</span><p>Merak soruları, drama, ilk İngilizce kelimeler.</p></div>
+        <div><span class="age">5–6 yaş</span><span class="name">Genç Ağaçlar</span><p>Okula hazırlık, problem çözme, sorumluluk.</p></div>
+      </div>
+      <p class="chart-note">Sınıf isimleri öneridir. Boylar Dünya Sağlık Örgütü büyüme eğrilerinden yaklaşık ortanca değerlerdir; cetvel 70 cm'den başlar.</p>
+    </div>
+  </section>
+
+  <!-- Dersler -->
+  <section id="dersler" class="band">
+    <div class="wrap">
+      <div class="head">
+        <span class="hand">her gün yeni bir dal</span>
+        <h2 class="rooted">Dersler ve atölyeler</h2>
+      </div>
+      <div class="courses">
+        <article class="course"><span class="sticker">İngilizce</span><img src="img/ingilizce.jpg" alt="Laboratuvar deneyi yapan gülümseyen çocuk"><h3>Oynayarak İngilizce</h3><p>Puppet Talk & Drama, English Lab & Discovery, Show and Tell.</p></article>
+        <article class="course"><span class="sticker">Drama</span><img src="img/drama.jpg" alt="Bahçede çiçek eken çocuklar"><h3>Masaldan sahneye</h3><p>Doğanın İçinde Drama, Imagine & Act, meslek canlandırma.</p></article>
+        <article class="course"><span class="sticker">Hareket</span><img src="img/spor.jpg" alt="Çimenlerde yoga yapan çocuklar"><h3>Güçlü beden</h3><p>Mini tenis, zumba ve dans, yoga, yüzme ve daha fazlası.</p></article>
+        <article class="course"><span class="sticker">Nezaket</span><img src="img/nezaket.jpg" alt="Boya kalemi paylaşan iki çocuk"><h3>Nezaket Akademisi</h3><p>Paylaşmak, teşekkür etmek, saygı göstermek.</p></article>
+        <article class="course"><span class="sticker">Atölye</span><img src="img/atolye.jpg" alt="Çocuğuyla birlikte üretim yapan aile"><h3>Aile atölyeleri</h3><p>Ailelerin katıldığı üretim ve yaratıcılık atölyeleri.</p></article>
+        <article class="course"><span class="sticker">Sanat</span><img src="img/sanat.jpg" alt="Keman çalan küçük kız"><h3>Müzik ve sanat</h3><p>Ritim, resim, el işi; kendini ifade etmenin yolları.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hakkımızda -->
+  <section id="hakkimizda">
+    <div class="wrap about">
+      <figure class="polaroid">
+        <img src="img/mudur.jpg" alt="Kurucu müdür Büşra Önel">
+        <figcaption><span class="hand" style="color:var(--ink)">Büşra Önel</span><small>Kurucu Müdür</small></figcaption>
+      </figure>
+      <div class="text">
+        <div class="head" style="margin-bottom:0"><span class="hand">merhaba!</span><h2 class="rooted">Küçük kalplerde büyük izler</h2></div>
+        <p class="quote">“Her çocuğun kalbine sevgiyle dokunuyor, hayallerine umutla eşlik ediyoruz.”</p>
+        <p class="lead">Bu alana müdür mesajı gelecek. Okulun neden kurulduğu, çocuklara ve ailelere verdiği söz burada iki üç cümleyle anlatılacak.</p>
+        <ol class="vine">
+          <li><time>Mart 2026</time><span>Konya'da yeni bir başlangıç</span></li>
+          <li><time>Haziran 2026</time><span>2026–2027 kayıt dönemi başladı</span></li>
+          <li><time>7 Ekim 2026</time><span>Okulumuz açıldı, ilk günler ve uyum</span></li>
+          <li><time>12 Ekim 2026</time><span>MEB mevzuatı gereği adımız “Küçük Kökler Anaokulu” oldu</span></li>
+        </ol>
+        <p class="note">Bizi “Little Roots Academy” adıyla tanıyorsanız doğru yerdesiniz: aynı okul, aynı ekip, yeni isim.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Okulda yaşam -->
+  <section id="okulda-yasam" class="band">
+    <div class="wrap life">
+      <div class="life-imgs">
+        <figure class="p p1" style="margin:0"><img src="img/avlu.jpg" alt="Okul avlusunda balonlarla etkinlik"><span>avlumuzda bir gün</span></figure>
+        <figure class="p p2" style="margin:0"><img src="img/bina.jpg" alt="Küçük Kökler okul binası"><span>okulumuz</span></figure>
+      </div>
+      <div>
+        <div class="head" style="margin-bottom:24px"><span class="hand">aileler için</span><h2 class="rooted">Gönül rahatlığıyla bırakın</h2></div>
+        <div class="life-list">
+          <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="22"/><path class="r" d="M22 10 L32 14 V22 C32 28 27 32 22 34 C17 32 12 28 12 22 V14Z"/></svg><h3>Güvenlik</h3><p>Ortak alanlar 7/24 kamerayla izlenir, giriş ve çıkışlar danışmada kontrol edilir.</p></div>
+          <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="22"/><path class="r" d="M12 24 H32 C32 30 27 34 22 34 C17 34 12 30 12 24Z M22 24 V16 M22 16 C22 12 26 10 29 11 C28 14 25 16 22 16Z"/></svg><h3>Beslenme</h3><p>Yaş grubuna uygun, dengeli ve besleyici günlük öğünler.</p></div>
+          <div><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="22"/><path class="r" d="M22 33 C14 27 10 22 10 17 C10 13 13 11 16 11 C19 11 21 13 22 15 C23 13 25 11 28 11 C31 11 34 13 34 17 C34 22 30 27 22 33Z"/></svg><h3>Rehberlik (PDR)</h3><p>Gelişim yakından izlenir, gerektiğinde aileyle birlikte destek çalışması yapılır.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section id="sss">
+    <div class="wrap">
+      <div class="head"><span class="hand">en çok sorulanlar</span><h2 class="rooted">Merak edilenler</h2></div>
+      <div class="faq">
+        <details open><summary>Hangi yaş grubuna hizmet veriyorsunuz?</summary><p>2–6 yaş arası çocuklara, yaşa ve gelişime uygun programlarla hizmet veriyoruz.</p></details>
+        <details><summary>Eğitim yaklaşımınız nedir?</summary><p>Bank Street modeli: çocuk merkezli, araştırarak ve keşfederek öğrenme.</p></details>
+        <details><summary>Sadece akademik eğitim mi veriliyor?</summary><p>Hayır. Sosyal beceri, öz güven, problem çözme ve günlük yaşam becerileri de programın parçası.</p></details>
+        <details><summary>Beslenme nasıl planlanıyor?</summary><p>Yaş grubuna uygun, dengeli, sağlıklı ve besleyici öğünlerle.</p></details>
+        <details><summary>Güvenlik nasıl sağlanıyor?</summary><p>Ortak alanlarda 7/24 kamera var, giriş ve çıkışlar danışmada kontrol ediliyor.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kayıt + iletişim -->
+  <section id="iletisim" class="band">
+    <div class="wrap contact">
+      <form id="on-kayit" novalidate>
+        <div><span class="hand">tanışalım mı?</span><h2 style="margin-top:4px">Ön kayıt</h2></div>
+        <div class="row">
+          <label for="veli">Veli adı soyadı<input id="veli" name="veli" autocomplete="name" placeholder="Ayşe Yılmaz"></label>
+          <label for="tel">Telefon<input id="tel" name="tel" type="tel" autocomplete="tel" placeholder="05xx xxx xx xx"></label>
+        </div>
+        <div class="row">
+          <label for="cocuk">Çocuğun adı<input id="cocuk" name="cocuk" placeholder="Deniz"></label>
+          <label for="yas">Çocuğun yaşı
+            <select id="yas" name="yas"><option>2 yaş · Tohumlar</option><option>3 yaş · Filizler</option><option selected>4 yaş · Fidanlar</option><option>5–6 yaş · Genç Ağaçlar</option></select>
+          </label>
+        </div>
+        <label for="mesaj">Mesajınız (isteğe bağlı)<textarea id="mesaj" name="mesaj" placeholder="Okulu ziyaret etmek istiyoruz."></textarea></label>
+        <button class="btn" type="submit">Ön kayıt talebi gönder</button>
+        <p class="form-msg" id="form-msg" hidden>Taslak: form henüz bir yere bağlı değil. Canlı sitede talepler okula e-posta veya WhatsApp ile iletilecek.</p>
+      </form>
+      <div class="info">
+        <div class="head" style="margin-bottom:0"><span class="hand">bekleriz!</span><h2 class="rooted">Okulumuzu ziyaret edin</h2></div>
+        <dl>
+          <div><dt>Adres</dt><dd>Hadimi Mah. Zafer Sk. No:23/C<br>Meram / Konya</dd></div>
+          <div><dt>Telefon</dt><dd class="phone">0507 131 88 68<button class="copy" type="button" id="copy-tel">Kopyala</button></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/kucukkokleranaokulukonya/" target="_blank" rel="noopener">@kucukkokleranaokulukonya</a></dd></div>
+        </dl>
+        <div class="actions" style="margin-top:0">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Hadimi+Mah.+Zafer+Sk.+No%3A23%2FC+Meram+Konya" target="_blank" rel="noopener">Yol tarifi al</a>
+          <a class="btn ghost" href="https://wa.me/905071318868" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<svg class="grass-top" viewBox="0 0 1200 26" preserveAspectRatio="none" aria-hidden="true" style="background:var(--band)"><path d="M0 26 V14 L20 6 L34 16 L52 4 L70 16 L92 8 L110 18 L130 6 L150 16 L176 8 L196 18 L222 6 L240 16 L266 9 L290 18 L312 6 L334 16 L360 8 L380 18 L404 5 L426 16 L450 9 L474 18 L498 6 L520 16 L546 8 L568 18 L590 5 L614 16 L640 8 L662 18 L688 6 L708 16 L734 9 L756 18 L780 5 L802 16 L828 8 L850 18 L874 6 L896 16 L920 9 L944 18 L968 5 L990 16 L1014 8 L1036 18 L1060 6 L1082 16 L1106 8 L1128 18 L1152 5 L1176 16 L1200 8 V26Z"/></svg>
+<footer>
+  <svg class="rootline" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+    <path class="r" d="M120 0 C126 20 110 36 118 60"/><path class="r2" d="M118 26 C104 34 96 40 90 52"/>
+    <path class="r" d="M420 0 C414 22 430 38 424 60"/><path class="r2" d="M420 30 C436 36 446 44 450 56"/>
+    <path class="r" d="M760 0 C768 18 752 34 762 60"/><path class="r2" d="M760 22 C744 30 738 38 732 50"/>
+    <path class="r" d="M1060 0 C1054 20 1070 40 1062 60"/><path class="r2" d="M1060 28 C1076 34 1084 42 1088 54"/>
+  </svg>
+  <div class="wrap">
+    <span class="hand">Kökten geleceğe, birlikte büyüyoruz.</span>
+    <span>© 2026 Küçük Kökler Anaokulu · Meram, Konya
+      <svg class="ladybug" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="19" r="11" fill="#BD6252"/><circle cx="17" cy="9" r="5" fill="#2A1B12"/><path d="M17 9 V30" stroke="#2A1B12" stroke-width="1.6"/><circle cx="12" cy="17" r="2" fill="#2A1B12"/><circle cx="22" cy="17" r="2" fill="#2A1B12"/><circle cx="13" cy="24" r="1.8" fill="#2A1B12"/><circle cx="21" cy="24" r="1.8" fill="#2A1B12"/></svg>
+    </span>
+  </div>
+</footer>
+
+<script>
+// Büyüme cetveli: tek ölçek, 70–120 cm
+(function(){
+  var g=document.getElementById('growth'),ruler=document.getElementById('ruler');
+  function layout(){
+    var H=g.clientHeight,min=70,max=120,px=H/(max-min);
+    ruler.innerHTML='';
+    for(var v=min+10;v<=max;v+=10){var s=document.createElement('span');s.textContent=v;s.style.bottom=((v-min)*px)+'px';ruler.appendChild(s);}
+    g.querySelectorAll('.stage').forEach(function(st){
+      var h=(+st.dataset.cm-min)*px;
+      st.querySelector('.mark').style.bottom=h+'px';
+      st.querySelector('svg').style.height=h+'px';
+    });
+  }
+  layout();window.addEventListener('resize',layout);
+})();
+
+// Kökler: soluk kök her zaman görünür; üstüne "öz su" çizgisi görünce büyür
+(function(){
+  var svg=document.querySelector('.rootmap svg');if(!svg)return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var base=svg.querySelector('.base'),sap=base.cloneNode(true);sap.setAttribute('class','sap');svg.appendChild(sap);
+  var paths=[].slice.call(sap.querySelectorAll('path'));
+  paths.forEach(function(p){var L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=reduce?0:L;});
+  if(reduce||!('IntersectionObserver' in window)){paths.forEach(function(p){p.style.strokeDashoffset=0});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+    paths.forEach(function(p,i){p.style.transition='stroke-dashoffset '+(p.classList.contains('r')?1.6:1)+'s ease '+(p.classList.contains('r')?0:1.1+i*.04)+'s';p.style.strokeDashoffset=0;});
+    io.disconnect();}})},{threshold:.4});
+  io.observe(svg);
+})();
+
+document.getElementById('on-kayit').addEventListener('submit',function(e){e.preventDefault();document.getElementById('form-msg').hidden=false;});
+document.getElementById('copy-tel').addEventListener('click',function(){
+  var b=this;try{navigator.clipboard.writeText('0507 131 88 68').then(function(){b.textContent='Kopyalandı'},function(){});}catch(err){}
+});
+</script>
+
+</body>
+</html>
